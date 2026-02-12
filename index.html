@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Local Walking Tour</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="app-header">
+    <h1>Local Walking Tour</h1>
+    <p>
+      Create your own walking tour! Add/Remove Landmarks as you please.
+    </p>
+  </header>
+
+  <main class="app-main">
+    <section class="sidebar">
+      <section class="landmark-form-section">
+        <h2>Add a Landmark</h2>
+        <fieldset>
+            <legend>Location</legend>
+            <form id="landmark-form">
+                <div class="form">
+                    <label for="title">Landmark Title</label>
+                    <input type="text" id="title" name="title" required placeholder="McMaster University">
+                </div>
+
+                <div class="form">
+                    <label for="description">Description</label>
+                    <textarea id="description" name="description" required
+                            placeholder="Describe this landmark."></textarea>
+                </div>
+
+                <div class="form">
+                    <label for="image">Landmark Photo</label>
+                    <input type="file" id="image" name="image" accept="image/*">
+                </div>
+
+                
+                <p class="field-help">
+                Input Coordinates or Use Your Current Location.
+                </p>
+
+                <button type="button" id="use-my-location" class="btn-secondary">
+                Use My Current Location
+                </button>
+
+                <div class="coordinates-row">
+                <div>
+                    <label for="latitude">Latitude</label>
+                    <input type="number" id="latitude" name="latitude" step="0.000001" placeholder="40.02">
+                </div>
+                <div>
+                    <label for="longitude">Longitude</label>
+                    <input type="number" id="longitude" name="longitude" step="0.000001" placeholder="62.94">
+                </div>
+                </div>
+
+                </br>
+
+                <div class="form">
+                    <button type="submit" class="btn-primary">Add to Tour</button>
+                </div>
+                <p id="form-error" class="form-error" aria-live="polite"></p>
+            </form>
+        </fieldset>
+      </section>
+
+      <section class="landmark-list-section">
+        <h2>Your Landmarks</h2>
+        <p class="section-help">
+          Click a marker on the map to highlight it here. Use show/hide to toggle markers and delete to remove them from the tour.
+        </p>
+        <ul id="landmark-list" class="landmark-list" aria-live="polite">
+          <!-- Landmarks will be inserted here dynamically -->
+        </ul>
+      </section>
+    </section>
+
+    <section class="map-section" aria-label="Map of Landmarks">
+      <div id="map"></div>
+      <p class="map-help">
+        The map centers on your location when possible, otherwise on McMaster University. Click markers to see landmark details.
+      </p>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+  <script
+    async
+    defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCIrTqUvWT5AJawrp-ti7jq2gXye6jsYNc&callback=initMap">
+  </script>
+
+</body>
+</html>
